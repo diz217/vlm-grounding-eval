@@ -1,0 +1,28 @@
+name: internvl35-8b-hf
+seed: 42
+model:
+  backend: transformers
+  id: OpenGVLab/InternVL3_5-8B-HF
+  revision: 741a7d03020411e666c6109218ab71e08151ef86
+  device: cuda
+  dtype: bfloat16
+  coordinate_format: normalized_1000
+  local_files_only: true
+  cache_dir: ../../data/model-cache
+  max_new_tokens: 128
+  attention: sdpa
+  processor_kwargs: {}
+  chat_template_kwargs: {}
+data:
+  manifests:
+    - ../../data/eval/pope/random.jsonl
+    - ../../data/eval/pope/popular.jsonl
+    - ../../data/eval/pope/adversarial.jsonl
+    - ../../data/eval/gref/debug.jsonl
+    - ../../data/eval/gref/eval.jsonl
+  split: eval
+paired_existence: true
+output_dir: ../../artifacts/eval/internvl35-8b
+scoring:
+  iou_threshold: 0.5
+  bootstrap_samples: 1000

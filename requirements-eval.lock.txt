@@ -1,0 +1,11 @@
+# Tested direct dependencies on the development host (Python 3.11).
+# Install the appropriate CUDA PyTorch wheel separately; see README.
+torch==2.5.1
+torchvision==0.20.1
+transformers==5.2.0
+huggingface-hub==1.5.0
+safetensors==0.7.0
+numpy==1.26.4
+PyYAML==6.0.1
+Pillow==10.2.0
+pytest==7.4.0

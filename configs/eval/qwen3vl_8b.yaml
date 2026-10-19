@@ -1,0 +1,30 @@
+name: qwen3vl-8b
+seed: 42
+model:
+  backend: transformers
+  id: Qwen/Qwen3-VL-8B-Instruct
+  revision: 0c351dd01ed87e9c1b53cbc748cba10e6187ff3b
+  device: cuda
+  dtype: bfloat16
+  coordinate_format: normalized_1000
+  local_files_only: true
+  cache_dir: ../../data/model-cache
+  max_new_tokens: 128
+  attention: sdpa
+  processor_kwargs:
+    min_pixels: 65536
+    max_pixels: 1048576
+  chat_template_kwargs: {}
+data:
+  manifests:
+    - ../../data/eval/pope/random.jsonl
+    - ../../data/eval/pope/popular.jsonl
+    - ../../data/eval/pope/adversarial.jsonl
+    - ../../data/eval/gref/debug.jsonl
+    - ../../data/eval/gref/eval.jsonl
+  split: eval
+paired_existence: true
+output_dir: ../../artifacts/eval/qwen3vl-8b
+scoring:
+  iou_threshold: 0.5
+  bootstrap_samples: 1000
